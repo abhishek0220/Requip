@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-form-field input {
+  border: none;
+  height: initial !important;
+  margin: 0;
+}
+mat-form-field input:focus {
+  border: none;
+  box-shadow: none;
+  height: initial !important;
+}
+
+button:focus{
+  background-color: transparent !important;
+}
