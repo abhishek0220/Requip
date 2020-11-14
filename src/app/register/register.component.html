@@ -1,1 +1,25 @@
-<p>register works!</p>
+<div class="container row" style="margin-top: 20px; height: 100%;">
+    <div class="col m6 s10 offset-m3 offset-s1 z-depth-4" style="padding: 20px 10px;">
+        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+            <mat-form-field appearance="fill" class="col s12">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col s12">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col s12">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col s12">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput formControlName="phone_number">
+            </mat-form-field>
+            <div class="col s12 center" style="margin-top: 20px;">
+                <button mat-raised-button color="accent">SignUp</button>
+            </div>
+        </form>
+    </div>
+</div>
