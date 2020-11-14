@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { TokenIntercepterService } from './services/token-intercepter.service';
 import { ProfileComponent } from './profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatCardModule} from '@angular/material/card';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
