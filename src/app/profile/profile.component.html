@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 50px;">
+    <mat-card *ngIf="username">
+        <div class="row">
+            <div class="col s3">
+                <img src="{{storeInfo.serverUrl}}/static/users/{{username}}/user.png" width="100%">
+            </div>
+            <div class="col" style="padding-top: 20px;">
+                <mat-card-title>{{name}}</mat-card-title>
+                <mat-card-subtitle>{{username}}</mat-card-subtitle>
+                <h4><b>Email ID:</b> {{email}}</h4>
+            </div>
+        </div>
+        <mat-card-content>
+            <p>
+              {{about}}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

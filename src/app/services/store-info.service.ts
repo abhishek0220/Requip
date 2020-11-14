@@ -11,7 +11,7 @@ export class StoreInfoService {
   userid:string;
   constructor() {
     this.serverUrl = environment.serverUrl;
-    this.refreshSignedIn();
+    this.refresh();
   }
   getToken(){
     return localStorage.getItem('token');
@@ -21,15 +21,25 @@ export class StoreInfoService {
     return localStorage.getItem('refreshToken');
   }
 
+  getUser(){
+    return localStorage.getItem('userId');
+  }
+
   setToken(token){
     localStorage.setItem('token',token);
-    this.refreshSignedIn();
+    this.refresh();
+  }
+
+  setUser(user){
+    this.userid = user;
+    localStorage.setItem('userId',user);
   }
 
   setRefreshToken(refreshToken){
     localStorage.setItem('refreshToken',refreshToken);
   }
-  refreshSignedIn(){
+  refresh(){
+    this.userid = this.getUser();
     this.isSignedIn = this.getToken()?true:false;
   }
   signOut(){
@@ -38,6 +48,6 @@ export class StoreInfoService {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
-    this.refreshSignedIn();
+    this.refresh();
   }
 }

@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
           return;
         }
         else{
-          console.log("done");
+          console.log("done", data['username']);
+          this.storeInfo.setUser(data['username']);
           this.storeInfo.setToken(data['access_token']);
           this.storeInfo.setRefreshToken(data['refresh_token']);
           this.router.navigateByUrl('');

@@ -2,6 +2,10 @@
     <div class="col m6 s10 offset-m3 offset-s1 z-depth-4" style="padding: 20px 10px;">
         <form [formGroup]="signupForm" (ngSubmit)="signUp()">
             <mat-form-field appearance="fill" class="col s12">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col s12">
                 <mat-label>Username</mat-label>
                 <input matInput formControlName="username">
             </mat-form-field>
