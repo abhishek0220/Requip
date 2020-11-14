@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     }
     this.ark = "loading...";
     this.http.get(this.storeInfo.serverUrl+'/profile').pipe().subscribe((data)=>{
+      this.storeInfo.setImage(data['image'])
       this.ark = JSON.stringify(data);
     },error =>{
       console.log(error)

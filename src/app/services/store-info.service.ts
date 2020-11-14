@@ -9,9 +9,13 @@ export class StoreInfoService {
   serverUrl: string;
   isSignedIn : boolean;
   userid:string;
+  image:string;
+  mediaServer : string;
   constructor() {
     this.serverUrl = environment.serverUrl;
+    this.mediaServer = environment.mediaServerUrl;
     this.refresh();
+    this.image = this.getImage();
   }
   getToken(){
     return localStorage.getItem('token');
@@ -20,7 +24,9 @@ export class StoreInfoService {
   getRefreshToken(){
     return localStorage.getItem('refreshToken');
   }
-
+  getImage(){
+    return localStorage.getItem('image');
+  }
   getUser(){
     return localStorage.getItem('userId');
   }
@@ -33,6 +39,10 @@ export class StoreInfoService {
   setUser(user){
     this.userid = user;
     localStorage.setItem('userId',user);
+  }
+  setImage(loc){
+    this.image = loc;
+    localStorage.setItem('image',loc);
   }
 
   setRefreshToken(refreshToken){

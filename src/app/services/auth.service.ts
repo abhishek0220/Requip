@@ -23,7 +23,7 @@ export class AuthService {
     return this.http.post<{accessToken: string; refreshToken: string}>
     (this.storeInfo.serverUrl + '/refreshToken', "", {headers : {Authorization : `Bearer ${refreshToken}`}} ).pipe(
       tap(response => {
-        this.storeInfo.setToken(response.accessToken);
+        this.storeInfo.setToken(response['access_token']);
       })
     );
   }

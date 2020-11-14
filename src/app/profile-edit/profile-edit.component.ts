@@ -25,7 +25,7 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit() {
     this.image64 = "";
-    this.imageUrl = `${this.storeInfo.serverUrl}/static/users/${this.storeInfo.userid}/user.png`
+    this.imageUrl = `${this.storeInfo.mediaServer}/${this.storeInfo.image}`
   }
   onChange(file: File) {
     this.uploaded = false;
@@ -51,6 +51,7 @@ export class ProfileEditComponent implements OnInit {
       this.http.post(this.storeInfo.serverUrl +'/edit/profile/pic', this.image64).pipe().subscribe((data)=>{
         console.log("changed");
         this.uploaded = false;
+        this.storeInfo.setImage(data['image']);
       },error =>{
         console.log(error)
       })
