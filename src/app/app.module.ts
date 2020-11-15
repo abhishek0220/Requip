@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { EditpostComponent } from './editpost/editpost.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditpostComponent } from './editpost/editpost.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

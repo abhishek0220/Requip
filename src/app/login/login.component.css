@@ -8,3 +8,20 @@ mat-form-field input:focus {
     box-shadow: none;
     height: initial !important;
   }
+
+  .form-image{
+    background-image: url(https://images.unsplash.com/photo-1594319517361-1a1c3b46ad69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #layer{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0,0.3);
+    padding: 20px;
+    font-size: 17px;
+    border-radius: 25px 0px 0px 0px;
+  }
