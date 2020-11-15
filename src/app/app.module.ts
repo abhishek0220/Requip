@@ -16,7 +16,10 @@ import { HomeComponent } from './home/home.component';
 import { TokenIntercepterService } from './services/token-intercepter.service';
 import { ProfileComponent } from './profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { CreatepostComponent } from './createpost/createpost.component';
+import { EditpostComponent } from './editpost/editpost.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    CreatepostComponent,
+    EditpostComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

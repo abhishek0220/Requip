@@ -12,6 +12,7 @@ mat-form-field input:focus {
   height: initial !important;
 }
 
-button:focus{
-  background-color: transparent !important;
+
+.mat-menu-item {
+  background-color: 'red' !important;
 }

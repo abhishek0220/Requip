@@ -1,14 +1,14 @@
 <p *ngIf="storeInfo.isSignedIn">
-  <mat-toolbar >
-    <span>Requip</span>
+  <mat-toolbar>
+    <span class="hover-cursor" (click)="goTohome()">Requip</span>
     <span class="example-spacer"></span>
-    <button  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button  mat-icon-button class="example-icon favorite-icon" (click)="gotoProfile()">
       <img src="{{storeInfo.mediaServer}}/{{storeInfo.image}}" style="height: 100%;border-radius: 50%;">
     </button>
-    <h6 style="margin-right: 20px;">{{storeInfo.userid}}</h6>
-    <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>arrow_forward</mat-icon>
-    </button>
+    <mat-icon [matMenuTriggerFor]="menu" class="hover-cursor">arrow_drop_down</mat-icon>
+    <mat-menu #menu="matMenu" style="background-color: antiquewhite;">
+      <a mat-menu-item (click)="logout()">Logout</a>
+    </mat-menu>
   </mat-toolbar>
 </p>
 <router-outlet></router-outlet>   

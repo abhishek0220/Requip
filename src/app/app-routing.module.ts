@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { EditpostComponent } from './editpost/editpost.component';
+import { CreatepostComponent } from './createpost/createpost.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,14 @@ const routes: Routes = [
     path:'edit/profile',
     component: ProfileEditComponent
   },
+  {
+    path:'edit/post',
+    component: EditpostComponent
+  },
+  {
+    path:'add',
+    component: CreatepostComponent
+  }
 ];
 
 @NgModule({

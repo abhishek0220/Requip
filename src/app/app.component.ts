@@ -17,4 +17,10 @@ export class AppComponent {
     this.storeInfo.signOut();
     return this.router.navigateByUrl('login');
   }
+  gotoProfile(){
+    return this.router.navigateByUrl(`profile/${this.storeInfo.getUser()}`);
+  }
+  goTohome(){
+    return this.router.navigateByUrl('');
+  }
 }

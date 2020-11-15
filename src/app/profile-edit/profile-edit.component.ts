@@ -45,7 +45,6 @@ export class ProfileEditComponent implements OnInit {
       };
     }
   }
-
   upload() {
     if(this.uploaded){
       this.http.post(this.storeInfo.serverUrl +'/edit/profile/pic', this.image64).pipe().subscribe((data)=>{

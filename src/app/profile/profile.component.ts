@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   name: string;
   email: string;
   about: string;
+  image:string;
+  ownProfile : boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -23,7 +25,20 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    this.userid = this.activatedRoute.snapshot.paramMap.get('userid').toString();
+    this.activatedRoute.params.subscribe(params => {
+      this.userid = params['userid'];
+      this.initialiseState(); // reset and set based on new parameter this time
+    });
+    
+  }
+  initialiseState(){
+    this.username = "";
+    this.name = "";
+    this.email = "";
+    this.about = "";
+    this.image = "";
+    this.ownProfile = false;
+    if(this.userid == this.storeInfo.userid) this.ownProfile = true;
     this.http.get(this.storeInfo.serverUrl + '/profile/' + this.userid).subscribe((response)=>{
       if(!response['message']){
         console.log(response)
@@ -31,9 +46,13 @@ export class ProfileComponent implements OnInit {
         this.username = this.userid;
         this.email = response['email'];
         this.about = response['about'];
+        this.image = response['image'];
       }
     },error=>{
       console.log('error')
     })
+  }
+  gotoEdit(){
+    return this.router.navigateByUrl('edit/profile');
   }
 }
