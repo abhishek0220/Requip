@@ -1,14 +1,17 @@
 <p>
-  <mat-toolbar class="blue accent-4 z-depth-3">
-    <span class="hover-cursor white-text" (click)="goTohome()">Requip</span>
-    <span class="example-spacer"></span>
-    <button *ngIf="storeInfo.isSignedIn"  mat-icon-button class="example-icon favorite-icon" (click)="gotoProfile()">
-      <img src="{{storeInfo.mediaServer}}/{{storeInfo.image}}" style="height: 100%;border-radius: 50%;">
-    </button>
-    <mat-icon *ngIf="storeInfo.isSignedIn" [matMenuTriggerFor]="menu" class="hover-cursor">arrow_drop_down</mat-icon>
-    <mat-menu #menu="matMenu" style="background-color: antiquewhite;">
-      <a mat-menu-item (click)="logout()">Logout</a>
-    </mat-menu>
+  <mat-toolbar class="accent-4 z-depth-3 mainnav" style="padding: 0;">
+    <div style="height: 100%; width: 100%; padding: 0px 16px; align-items: center; display: flex;" class="navlayer">
+      <span class="hover-cursor white-text" (click)="goTohome()">Requip</span>
+      <span class="example-spacer"></span>
+      <button *ngIf="storeInfo.isSignedIn"  mat-icon-button class="example-icon favorite-icon" (click)="gotoProfile()">
+        <img src="{{storeInfo.mediaServer}}/{{storeInfo.image}}" style="height: 100%;border-radius: 50%;">
+      </button>
+      <mat-icon *ngIf="storeInfo.isSignedIn" [matMenuTriggerFor]="menu" class="hover-cursor">arrow_drop_down</mat-icon>
+      <mat-menu #menu="matMenu" style="background-color: antiquewhite;">
+        <a mat-menu-item (click)="logout()">Logout</a>
+      </mat-menu>
+    </div>
+    
   </mat-toolbar>
 </p>
 <router-outlet></router-outlet>   

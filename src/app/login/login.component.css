@@ -25,3 +25,27 @@ mat-form-field input:focus {
     font-size: 17px;
     border-radius: 25px 0px 0px 0px;
   }
+  .form-out{
+    border-radius: 0px 0px 25px 0px; height: 100%;
+  }
+  .form-image{
+    border-radius: 25px 0px 0px 0px;
+  }
+  ::ng-deep input.mat-input-element {
+    color: #484a4c;
+  }
+@media only screen and (max-width: 600px) {
+  .form-out{
+    position: absolute;
+    z-index: 1;
+    background-color: transparent !important;
+    border-radius: 25px 0px 25px 0px;
+  }
+  .form-image{
+    border-radius: 25px 0px 25px 0px;
+  }
+  #layer{
+    background-color: rgba(217, 217, 217, 0.3);
+    border-radius: 25px 0px 25px 0px;
+  }
+}
