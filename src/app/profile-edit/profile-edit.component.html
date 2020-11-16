@@ -1,12 +1,56 @@
-<div class="container">
-    <div class="center">
-        <img [src]="imageUrl" style="border-radius: 50%; border-color: black; border-width: 2px;" height="240px" width="240px">
-        <br>
-        <button type="button" mat-stroked-button (click)="fileInput.click()" style="margin: 7px;">Choose File</button>
-        <button [disabled]="!uploaded" type="button" mat-stroked-button (click)="upload()" style="margin: 7px;">Upload Image</button>
-        <input hidden type="file" name="file" #fileInput 
-            (change)="onChange(fileInput.files[0])"
-              accept="image/jpeg" 
-        />
+<div class="container" style="margin-top: 30px;">
+    <h1>Edit Profile</h1>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col l3 m5 s12 right center">
+            Change Profile Picture
+            <img [src]="imageUrl" style="border-radius: 50%; border-color: aqua; border-width: 2px; border-style: solid;" height="240px" width="240px">
+            <br>
+            <button type="button" mat-stroked-button (click)="fileInput.click()" style="margin: 7px;">Choose File</button>
+            <button [disabled]="!uploaded" type="button" mat-stroked-button (click)="upload()" style="margin: 7px;">Upload Image</button>
+            <input hidden type="file" name="file" #fileInput 
+                (change)="onChange(fileInput.files[0])"
+                accept="image/jpeg" 
+            />
+        </div>
+        <div class="col l9 m7 s12">
+            <div class="example-container">
+                <form [formGroup]="profileForm" >
+                    <div>
+                        Username<br>
+                        <mat-form-field appearance="outline" style="width: 70%;" >
+                            <input matInput [disabled]="true" value="{{username}}">
+                        </mat-form-field><br>
+                    </div>
+                    <div>
+                        Name<br>
+                        <mat-form-field appearance="outline" style="width: 70%;" >
+                            <input matInput formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        Email<br>
+                        <mat-form-field appearance="outline" style="width: 70%;" >
+                            <input matInput [disabled]="true" value="{{email}}">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        Mobile Number<br>
+                        <mat-form-field appearance="outline" style="width: 70%;" >
+                            <input matInput formControlName="phone">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        About<br>
+                        <mat-form-field appearance="outline" style="width: 70%;" >
+                            <textarea formControlName="about" matInput></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="right">
+                        <button class="green accent-3" type="button" mat-raised-button style="width: 100px;" (click)="change()">Save</button>
+                    </div>
+                </form>
+              </div>
+              
+        </div>
     </div>
 </div>
