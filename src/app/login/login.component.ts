@@ -12,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  
   constructor(
     public fb: FormBuilder,
     private http: HttpClient,
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('');
       return;
     }
+    
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

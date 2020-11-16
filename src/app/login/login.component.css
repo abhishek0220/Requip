@@ -26,6 +26,7 @@ mat-form-field input:focus {
     border-radius: 25px 0px 0px 0px;
   }
   .form-out{
+    padding: 50px 20px 0px 20px;
     border-radius: 0px 0px 25px 0px; height: 100%;
   }
   .form-image{

@@ -8,3 +8,58 @@ mat-form-field input:focus {
     box-shadow: none;
     height: initial !important;
   }
+  .mainform{
+    height: 450px;
+    position: relative;
+  }
+  .form-image{
+    background-image: url(https://images.unsplash.com/photo-1594319517361-1a1c3b46ad69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #layer{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0,0.3);
+    padding: 20px;
+    font-size: 17px;
+    border-radius: 25px 0px 0px 0px;
+  }
+  .form-out{
+    border-radius: 0px 0px 25px 0px; height: 100%;
+  }
+  .form-image{
+    border-radius: 25px 0px 0px 0px;
+  }
+  ::ng-deep input.mat-input-element {
+    color: #484a4c;
+  }
+  ::ng-deep .mat-step-header .mat-step-icon {
+    background-color: transparent;
+    color: rosybrown;
+ } 
+ ::ng-deep .mat-form-field .mat-input {
+  color: black;
+} 
+@media only screen and (max-width: 600px) {
+  .form-out{
+    position: absolute;
+    z-index: 1;
+    background-color: transparent !important;
+    border-radius: 25px 0px 25px 0px;
+    padding: 50px 20px 0px 20px;
+  }
+  .form-image{
+    border-radius: 25px 0px 25px 0px;
+  }
+  #layer{
+    background-color: rgba(217, 217, 217, 0.3);
+    border-radius: 25px 0px 25px 0px;
+  }
+  .mainform{
+    height: 600px;
+  }
+}

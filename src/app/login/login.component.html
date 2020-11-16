@@ -3,11 +3,12 @@
         <div class="form-img col m3 offset-m2 s10 offset-s1 form-image z-depth-4" style="padding: 0; height: 100%;" >
             <div id="layer" class="left-align">
                 <h3>LogIn</h3><br>
-                <h5>Enjoy more options, Login to your Existing Dashboard Account.</h5>
-                <div class="white-text" style="bottom: 0; position: absolute;">
-                    <h5>Enter your credentials</h5>
+                <h5>Enjoy more options, Login to your Existing Requip Account.</h5>
+                <h5>Enter your credentials</h5>
+                <div class="white-text" style="bottom: 0; position: absolute;z-index: 12;">
+                    
                     <div class="cont-bottom center-align">
-                        <h5>Don`t have an Account? <a href="/signup"><b>SignUp</b></a> </h5>
+                        <h5>Don`t have an Account? <a href="./signup"><b>SignUp</b></a> </h5>
                     </div>
                 </div>
             </div>
@@ -15,7 +16,7 @@
         <div class="row col m10 s11" style="padding: 0; height: 5px; position: absolute; z-index: 11;">
         <div class="col m5 s8 blue accent-3 right" style="height: 100%;"></div>
         </div>
-        <div class="col m5 s10 offset-s1 z-depth-4 white valign-wrapper form-out" style="padding: 10px 20px; ">
+        <div class="col m5 s10 offset-s1 z-depth-4 white valign-wrapper form-out">
             <form [formGroup]="loginForm" (ngSubmit)="login()" style="z-index: 10;">
                 <mat-form-field appearance="outline" class=" col s12">
                     <mat-label>Username/Email</mat-label>

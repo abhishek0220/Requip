@@ -21,6 +21,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { EditpostComponent } from './editpost/editpost.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
   declarations: [
@@ -47,13 +49,20 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     MatCardModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenIntercepterService,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenIntercepterService,
+      multi: true
+    },
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
