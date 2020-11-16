@@ -47,13 +47,17 @@ export class LoginComponent implements OnInit {
       return false;
     }
     else{
+      this.storeInfo.loader = true;
       this.http.post(this.storeInfo.serverUrl + '/login',this.loginForm.value).pipe().subscribe((data)=>{
+        this.storeInfo.loader = false;
         if(!data["username"]){
           console.log("invalid");
+          this.openSnackBar("Invalid Credentials","Close")
           this.storeInfo.signOut();
           return;
         }
         else{
+          this.openSnackBar(`Welcome ${data['username']}`,"Close")
           console.log("done", data['username']);
           this.storeInfo.setUser(data['username']);
           this.storeInfo.setToken(data['access_token']);
@@ -62,6 +66,8 @@ export class LoginComponent implements OnInit {
         }
         
       },error =>{
+        this.storeInfo.loader = false;
+        this.openSnackBar("Some Error Occured","Close")
         console.log(error)
       })
     }

@@ -1,9 +1,9 @@
 <div class="container">
     <div class="center">
-        <img [src]="imageUrl" style="border-radius: 50%;" height="240px" width="240px">
+        <img [src]="imageUrl" style="border-radius: 50%; border-color: black; border-width: 2px;" height="240px" width="240px">
         <br>
-        <button class="blue accent-3 white-text" type="button" mat-raised-button (click)="fileInput.click()" style="margin: 7px;">Choose File</button>
-        <button class="green accent-3 white-text" [disabled]="!uploaded" type="button" mat-raised-button (click)="upload()" style="margin: 7px;">Upload Image</button>
+        <button type="button" mat-stroked-button (click)="fileInput.click()" style="margin: 7px;">Choose File</button>
+        <button [disabled]="!uploaded" type="button" mat-stroked-button (click)="upload()" style="margin: 7px;">Upload Image</button>
         <input hidden type="file" name="file" #fileInput 
             (change)="onChange(fileInput.files[0])"
               accept="image/jpeg" 

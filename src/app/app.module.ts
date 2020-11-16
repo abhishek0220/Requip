@@ -22,6 +22,7 @@ import { CreatepostComponent } from './createpost/createpost.component';
 import { EditpostComponent } from './editpost/editpost.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
@@ -50,7 +51,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatCardModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

@@ -11,6 +11,7 @@ export class StoreInfoService {
   userid:string;
   image:string;
   mediaServer : string;
+  loader = false;
   constructor() {
     this.serverUrl = environment.serverUrl;
     this.mediaServer = environment.mediaServerUrl;

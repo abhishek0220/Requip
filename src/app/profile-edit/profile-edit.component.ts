@@ -41,17 +41,21 @@ export class ProfileEditComponent implements OnInit {
           this.imageUrl = compressed;
           this.image64 = compressed;
           this.uploaded = true;
+          
         })
       };
     }
   }
   upload() {
     if(this.uploaded){
+      this.storeInfo.loader = true;
       this.http.post(this.storeInfo.serverUrl +'/edit/profile/pic', this.image64).pipe().subscribe((data)=>{
+        this.storeInfo.loader = false;
         console.log("changed");
         this.uploaded = false;
         this.storeInfo.setImage(data['image']);
       },error =>{
+        this.storeInfo.loader = false;
         console.log(error)
       })
     }
