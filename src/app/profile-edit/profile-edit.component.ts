@@ -53,16 +53,13 @@ export class ProfileEditComponent implements OnInit {
     })
   }
   getVal(){
-    this.storeInfo.loader = true;
     this.http.get(this.storeInfo.serverUrl+'/profile').pipe().subscribe((data)=>{
       this.profileForm.controls['name'].setValue(data['name']);
       this.profileForm.controls['about'].setValue(data['about']);
       this.profileForm.controls['phone'].setValue(data['phone']);
       this.username = data['username'];
       this.email = data['email'];
-      this.storeInfo.loader = false;
     },error =>{
-      this.storeInfo.loader = false;
       this.openSnackBar('Some Error Occured','Close')
     })
   }
