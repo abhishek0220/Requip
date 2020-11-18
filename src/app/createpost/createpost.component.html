@@ -4,7 +4,7 @@
             <div id="post" class="s12 black" style="padding: 2px; position: relative;">
                 <div style="height: 100%; width: 100%; background-image: url({{imageUrl}}); background-repeat: no-repeat; background-size: contain; background-position: center;"></div>
                 <div class="valign-wrapper white-text" style="height: 90%; width: 90%; position: absolute;">
-                    <div style="width: 100%;"><h1 class="center-align">Please Select Image</h1></div>
+                    <div style="width: 100%;" *ngIf="!isImage"><h1 class="center-align">Please Select Image</h1></div>
                 </div>
             </div>
             <button type="button" mat-stroked-button (click)="fileInput.click()"  style="margin: 7px;">Choose File</button>

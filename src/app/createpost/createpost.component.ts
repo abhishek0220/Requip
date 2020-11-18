@@ -15,6 +15,7 @@ export class CreatepostComponent implements OnInit {
   imageUrl = "";
   fileName: string;
   productForm: FormGroup;
+  isImage = false;
   constructor(
     private storeInfo : StoreInfoService,
     private router : Router,
@@ -47,6 +48,7 @@ export class CreatepostComponent implements OnInit {
             }
             this.compressImage(reader.result, width, height).then((compressed : string) => {
               this.imageUrl = compressed;   
+              this.isImage = true;
               this.productForm.controls['image'].setValue(compressed); 
             })
           }
@@ -63,10 +65,10 @@ export class CreatepostComponent implements OnInit {
   }
   mainForm() {
     this.productForm = this.fb.group({
-      title: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.minLength(3)]],
       type: ['', [Validators.required]],
-      price: ['0'],
-      phone: ['', [Validators.required]],
+      price: ['0', Validators.pattern('^[0-9]*$')],
+      phone: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[6-9]{1}?[0-9]{9}$')]],
       moneytized: ['', [Validators.required]],
       description: ['', [Validators.required]],
       image: ['']
@@ -83,12 +85,13 @@ export class CreatepostComponent implements OnInit {
       return false;
     }
     else{
+      this.storeInfo.loader = true;
       this.http.post(this.storeInfo.serverUrl + '/saman/addsaman',this.productForm.value).pipe().subscribe((data)=>{
-        //this.storeInfo.loader = false;
+        this.storeInfo.loader = false;
         this.openSnackBar('Object Added',"Close")
         
       },error =>{
-        //this.storeInfo.loader = false;
+        this.storeInfo.loader = false;
         this.openSnackBar("Some Error Occured","Close")
         console.log(error)
       })

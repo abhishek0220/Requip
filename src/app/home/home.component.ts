@@ -18,14 +18,14 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    if(!this.storeInfo.isSignedIn){
-      this.router.navigateByUrl('login');
-      return;
+    if(this.storeInfo.isSignedIn){
+      this.setDat();
     }
-    this.ark = "loading...";
+    
+  }
+  setDat(){
     this.http.get(this.storeInfo.serverUrl+'/profile').pipe().subscribe((data)=>{
       this.storeInfo.setImage(data['image'])
-      this.ark = JSON.stringify(data);
     },error =>{
       console.log(error)
     })
