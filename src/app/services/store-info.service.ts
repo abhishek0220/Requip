@@ -31,6 +31,9 @@ export class StoreInfoService {
   getUser(){
     return localStorage.getItem('userId');
   }
+  toggleLoader(){
+    this.loader = !this.loader;
+  }
 
   setToken(token){
     localStorage.setItem('token',token);
