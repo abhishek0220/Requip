@@ -11,7 +11,7 @@
             <button type="button" mat-stroked-button (click)="fileInput.click()"  style="margin: 7px;">Choose File</button>
             <input hidden type="file" name="file" #fileInput 
             (change)="onChange(fileInput.files[0])"
-                accept="image/jpeg" 
+                accept="image/jpeg, image/png" 
             />
         </div>
         <div class="col s10 offset-s1 m5">

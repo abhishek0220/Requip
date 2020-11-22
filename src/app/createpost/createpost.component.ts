@@ -25,6 +25,10 @@ export class CreatepostComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+    if(!this.storeInfo.isSignedIn){
+      this.router.navigateByUrl('login');
+      return;
+    }
     this.mainForm();
   }
   onChange(file: File) {
@@ -37,6 +41,7 @@ export class CreatepostComponent implements OnInit {
           var width = img.width;
           var height = img.height;
           var maxDim = 720;
+          console.log("99",height,width)
           if(width > maxDim || height > maxDim){
             if(height > width){
               width = (width*maxDim)/height;
@@ -46,12 +51,12 @@ export class CreatepostComponent implements OnInit {
               height = (height * maxDim)/ width;
               width = maxDim;
             }
-            this.compressImage(reader.result, width, height).then((compressed : string) => {
-              this.imageUrl = compressed;   
-              this.isImage = true;
-              this.productForm.controls['image'].setValue(compressed); 
-            })
           }
+          this.compressImage(reader.result, width, height).then((compressed : string) => {
+            this.imageUrl = compressed;   
+            this.isImage = true;
+            this.productForm.controls['image'].setValue(compressed); 
+          })
 
         }
         img.src = reader.result.toString();
@@ -75,7 +80,6 @@ export class CreatepostComponent implements OnInit {
     })
   }
   upload(){
-    console.log("add pressed")
     if(!this.productForm.valid){
       this.openSnackBar("Invalid Input","Close")
       return false;
@@ -89,6 +93,7 @@ export class CreatepostComponent implements OnInit {
       this.http.post(this.storeInfo.serverUrl + '/add',this.productForm.value).pipe().subscribe((data)=>{
         this.storeInfo.loader = false;
         this.openSnackBar('Object Added',"Close")
+        this.router.navigateByUrl('/');
         
       },error =>{
         this.storeInfo.loader = false;
@@ -98,6 +103,7 @@ export class CreatepostComponent implements OnInit {
     }
   }
   compressImage(src, newX, newY) {
+    console.log("here",newX,newY)
     return new Promise((res, rej) => {
       const img = new Image();
       img.src = src;
