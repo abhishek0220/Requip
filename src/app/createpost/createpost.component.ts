@@ -86,7 +86,7 @@ export class CreatepostComponent implements OnInit {
     }
     else{
       this.storeInfo.loader = true;
-      this.http.post(this.storeInfo.serverUrl + '/saman/addsaman',this.productForm.value).pipe().subscribe((data)=>{
+      this.http.post(this.storeInfo.serverUrl + '/add',this.productForm.value).pipe().subscribe((data)=>{
         this.storeInfo.loader = false;
         this.openSnackBar('Object Added',"Close")
         

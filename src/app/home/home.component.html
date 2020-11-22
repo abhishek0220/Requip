@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col s6 m4" *ngFor="let item of items" style="margin-bottom: 15px;">
-            <mat-card style="width: 100%;">
+            <mat-card style="width: 100%;" class="hover-cursor" (click)="open(item._id)">
                 <img mat-card-image src="{{storeInfo.mediaServer}}/{{item.images}}" id="item">
                 <mat-card-content>
                     <h2 style="padding: 0; margin: 0;">{{item.title}}</h2>

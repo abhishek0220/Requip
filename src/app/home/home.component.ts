@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
   getItems(skip = 0, anim = false){
     if(anim) this.storeInfo.toggleLoader()
     this.http.get(`${this.storeInfo.serverUrl}/saman?skip=${skip}`).pipe().subscribe((data)=>{
-      console.log(data)
       var con = false;
       for(var a in data){
         con = true;
@@ -56,8 +55,11 @@ export class HomeComponent implements OnInit {
       this.lastGet = Date.now();
       if(anim) this.storeInfo.toggleLoader()
     },error =>{
-      console.log(error,'kkk')
+      console.log(error)
     })
+  }
+  open(postID){
+    this.router.navigateByUrl('/post/'+postID)
   }
 
 }

@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { EditpostComponent } from './editpost/editpost.component';
 import { CreatepostComponent } from './createpost/createpost.component';
+import { ViewPostComponent } from './view-post/view-post.component';
 
 const routes: Routes = [
   {
@@ -30,12 +31,16 @@ const routes: Routes = [
     component: ProfileEditComponent
   },
   {
-    path:'edit/post',
+    path:'edit/post/:postID',
     component: EditpostComponent
   },
   {
     path:'add',
     component: CreatepostComponent
+  },
+  {
+    path:'post/:postID',
+    component: ViewPostComponent
   }
 ];
 

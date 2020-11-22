@@ -25,6 +25,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { ViewPostComponent } from './view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     ProfileComponent,
     ProfileEditComponent,
     CreatepostComponent,
-    EditpostComponent
+    EditpostComponent,
+    ViewPostComponent
   ],
   imports: [
     BrowserModule,

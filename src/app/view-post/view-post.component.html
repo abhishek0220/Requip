@@ -1,0 +1,26 @@
+<div class="container" style="margin-top: 30px;">
+    <h1 *ngIf="post">{{post.title}}</h1>
+    <div class="row" *ngIf="post">
+        <div id="post" class="s12 black" style="padding: 2px; position: relative;">
+                <div style="height: 100%; width: 100%; background-image: url({{storeInfo.mediaServer}}/{{post.images}}); background-repeat: no-repeat; background-size: contain; background-position: center;"></div>
+        </div>
+    </div>
+    <div class="row" *ngIf="post">
+        <mat-card>
+            <mat-card-title>
+                {{post.title}}
+            </mat-card-title>
+            <mat-card-subtitle>by {{post.username}}</mat-card-subtitle>
+            <mat-card-content>
+                <p>{{post.description}}</p>
+            </mat-card-content>
+            <h4><b>Object Type:</b> {{post.type}}<br>
+            <b>Price:</b> {{post.price}}<br>
+            <b>Mobile Number:</b> {{post.phone}}</h4>
+            <div *ngIf="post.username == storeInfo.getUser()">
+                <button mat-stroked-button (click)="gotoEdit()" ><mat-icon style="font-size: 16px;">edit</mat-icon> Edit</button>
+            </div>
+        </mat-card>
+    </div>
+    
+</div>
