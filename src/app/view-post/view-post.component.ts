@@ -41,6 +41,9 @@ export class ViewPostComponent implements OnInit {
       this.openSnackBar('Some Error Occured','Close')
     })
   }
+  gotoProfile(){
+    this.router.navigateByUrl('profile/'+this.post['username']);
+  }
   gotoEdit(){
     this.router.navigateByUrl('edit/post/'+this.postID);
   }

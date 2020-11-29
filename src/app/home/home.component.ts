@@ -3,6 +3,8 @@ import { StoreInfoService } from '../services/store-info.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import { min } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +14,12 @@ import { HostListener } from '@angular/core';
 export class HomeComponent implements OnInit {
   ark = "";
   items = [];
+  allitems = [];
   lastGet  = 0;
   isAvailable = true;
+  running = false;
+  filterVal = new FormControl();
+  sortType = new FormControl();
   constructor(
     private storeInfo : StoreInfoService,
     private router : Router,
@@ -21,18 +27,26 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+    this.sortType.setValue('all');
+    this.filterVal.setValue('');
     if(this.storeInfo.isSignedIn){
       this.setDat();
     }
     this.getItems(); 
   }
   @HostListener("window:scroll", [])
-  onScroll(): void {
-    if ( this.isAvailable && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+
+  onScroll(){
+    if (!this.running && this.isAvailable && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       if(Date.now() - this.lastGet >= 1000){
-        this.lastGet = Date.now();
-        console.log("hhh");
-        this.getItems(this.items.length, true);
+        this.running = true;
+        this.storeInfo.toggleLoader();
+        setTimeout(() => {
+          console.log("getting image");
+          this.pushItems();
+          this.storeInfo.toggleLoader();
+          this.running = false;
+        }, 2000);
       }  
     }
   }
@@ -43,23 +57,35 @@ export class HomeComponent implements OnInit {
       console.log(error)
     })
   }
-  getItems(skip = 0, anim = false){
-    if(anim) this.storeInfo.toggleLoader()
-    this.http.get(`${this.storeInfo.serverUrl}/saman?skip=${skip}`).pipe().subscribe((data)=>{
-      var con = false;
+  getItems(quer:string = ""){
+    this.http.get(`${this.storeInfo.serverUrl}/saman${quer}`).pipe().subscribe((data)=>{
+      this.allitems = [];
       for(var a in data){
-        con = true;
-        this.items.push(data[a]);
+        this.allitems.push(data[a]);
       }
-      if(!con) this.isAvailable = false;
-      this.lastGet = Date.now();
-      if(anim) this.storeInfo.toggleLoader()
+      this.items = [];
+      this.pushItems();
     },error =>{
       console.log(error)
     })
   }
+  pushItems(){
+    var start = this.items.length;
+    for(var i=start; i<this.allitems.length && i<start+5; i++ ){
+      this.items.push(this.allitems[i]);
+    }
+    this.lastGet = Date.now();
+    if(this.allitems.length == this.items.length)
+      this.isAvailable = false;
+  }
   open(postID){
     this.router.navigateByUrl('/post/'+postID)
+  }
+  filterVia(){
+    var quer = this.filterVal.value;
+    if(quer != "")
+      quer = `?text=${quer}`
+    this.getItems(quer);
   }
 
 }

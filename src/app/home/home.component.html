@@ -1,12 +1,28 @@
 <div class="container" style="margin-top: 30px;">
     <div class="row">
-        <div class="col s7">
-            <mat-form-field appearance="outline" style="width: 100%;" >
+        <form (ngSubmit)="filterVia()">
+        <div class="col s12 m6">
+            <mat-form-field appearance="standard" style="width: 100%;" >
                 <mat-label>Title</mat-label>
-                <input matInput>
-                <mat-icon matSuffix> search</mat-icon>
+                <input matInput [formControl]="filterVal">
             </mat-form-field>
         </div>
+        <div class="col s9 m4">
+            <mat-form-field appearance="standard" style="width: 100%;">
+                <mat-select [formControl]="sortType">
+                    <mat-option value="all">ALL</mat-option>
+                    <mat-option value="books">Books</mat-option>
+                    <mat-option value="papers">Papers</mat-option>
+                    <mat-option value="notes">Notes</mat-option>
+                    <mat-option value="others">Others</mat-option>
+                </mat-select>
+                <mat-label>Sort By</mat-label>
+            </mat-form-field>
+        </div>
+        <div class="col s3 m2 right">
+            <button mat-fab><mat-icon>search</mat-icon></button>
+        </div>
+        </form>
     </div>
     <div class="row">
         <div class="col s6 m4 l3" *ngFor="let item of items" style="margin-bottom: 15px;">

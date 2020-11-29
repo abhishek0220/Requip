@@ -14,14 +14,13 @@ mat-form-field input {
 .example-card {
     max-width: 400px;
   }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+
   #item{
     height: 250px;;
   }
+  .mat-button-focus-overlay { 
+    background-color: transparent!important; 
+    }
   @media only screen and (max-width: 600px){
     #item{
       height: 180px;;
