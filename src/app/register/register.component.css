@@ -8,6 +8,11 @@ mat-form-field input:focus {
     box-shadow: none;
     height: initial !important;
   }
+  mat-form-field input[type=password]:focus {
+    border: none;
+    box-shadow: none;
+    height: initial !important;
+  }
   .mainform{
     height: 450px;
     position: relative;

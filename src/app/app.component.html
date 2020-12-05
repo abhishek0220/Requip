@@ -1,4 +1,4 @@
-<div *ngIf="storeInfo.loader" class="valign-wrapper" style="height: 100vh; width: 100vw; position: absolute; background-color: rgba(252, 252, 252, 0.4); z-index: 100;">
+<div *ngIf="storeInfo.loader" class="valign-wrapper" style="height: 100%; width: 100vw; position: fixed; background-color: rgba(252, 252, 252, 0.4); z-index: 100;">
     <div class="valign-wrapper" style="height: 100vh; width: 100%; position: fixed;">
         <div class="load" style="height: 100px; width: 100px; margin: 0 auto; "></div>
     </div>
@@ -24,7 +24,7 @@
       </button>
       <mat-icon *ngIf="storeInfo.isSignedIn" [matMenuTriggerFor]="menu" class="hover-cursor white-text">arrow_drop_down</mat-icon>
       <mat-menu #menu="matMenu" style="background-color: antiquewhite;">
-        <a mat-menu-item href="/add">Add Item</a>
+        <a mat-menu-item href="add">Add Item</a>
         <a mat-menu-item (click)="logout()">Logout</a>
       </mat-menu>
     </div>

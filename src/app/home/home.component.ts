@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   isAvailable = true;
   running = false;
   filterVal = new FormControl();
-  sortType = new FormControl();
+  objType = new FormControl();
   constructor(
     private storeInfo : StoreInfoService,
     private router : Router,
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    this.sortType.setValue('all');
+    this.objType.setValue('all');
     this.filterVal.setValue('');
     if(this.storeInfo.isSignedIn){
       this.setDat();
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
           this.pushItems();
           this.storeInfo.toggleLoader();
           this.running = false;
-        }, 2000);
+        }, 1000);
       }  
     }
   }
@@ -57,7 +57,8 @@ export class HomeComponent implements OnInit {
       console.log(error)
     })
   }
-  getItems(quer:string = ""){
+  getItems(quer:string = "", loader = false){
+    if(loader) this.storeInfo.toggleLoader();
     this.http.get(`${this.storeInfo.serverUrl}/saman${quer}`).pipe().subscribe((data)=>{
       this.allitems = [];
       for(var a in data){
@@ -65,8 +66,10 @@ export class HomeComponent implements OnInit {
       }
       this.items = [];
       this.pushItems();
+      if(loader) this.storeInfo.toggleLoader();
     },error =>{
       console.log(error)
+      if(loader) this.storeInfo.toggleLoader();
     })
   }
   pushItems(){
@@ -83,9 +86,12 @@ export class HomeComponent implements OnInit {
   }
   filterVia(){
     var quer = this.filterVal.value;
+    var objT = this.objType.value;
     if(quer != "")
-      quer = `?text=${quer}`
-    this.getItems(quer);
+      quer = `?text=${quer}&type=${objT}`
+    else
+      quer = `?type=${objT}`
+    this.getItems(quer, true);
   }
 
 }
