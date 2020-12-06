@@ -8,6 +8,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { EditpostComponent } from './editpost/editpost.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { ViewPostComponent } from './view-post/view-post.component';
+import { ResetComponent } from './reset/reset.component';
+import { VerifyComponent } from './verify/verify.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path:'post/:postID',
     component: ViewPostComponent
+  },
+  {
+    path: 'reset/:_id/:token',
+    component: ResetComponent
+  },
+  {
+    path: 'verify/:_id/:token',
+    component: VerifyComponent
   }
 ];
 

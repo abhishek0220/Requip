@@ -12,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  idng :string;
   
   constructor(
     public fb: FormBuilder,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('');
       return;
     }
+    
     
   }
   openSnackBar(message: string, action: string) {
@@ -71,5 +73,18 @@ export class LoginComponent implements OnInit {
         console.log(error)
       })
     }
+  }
+  async reset(){
+    var user = this.loginForm.get('id').value;
+    console.log(user)
+    this.storeInfo.toggleLoader();
+    this.http.get(this.storeInfo.serverUrl + '/reset/' + user).pipe().subscribe((data)=>{
+      this.storeInfo.toggleLoader();
+      this.openSnackBar(`${data['message']}`,"Close")
+    },error =>{
+      this.storeInfo.toggleLoader();
+      this.openSnackBar("Some Error Occured","Close")
+      console.log(error)
+    })
   }
 }
