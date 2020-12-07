@@ -9,6 +9,10 @@
         <mat-card>
             <mat-card-title>
                 {{post.title}}
+                <mat-icon class="hover-cursor right" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                <mat-menu #menu="matMenu" style="background-color: antiquewhite;">
+                    <a mat-menu-item>Report</a>
+                </mat-menu> 
             </mat-card-title>
             <mat-card-subtitle (click)="gotoProfile()" class="hover-cursor">by {{post.username}}</mat-card-subtitle>
             <mat-card-content>

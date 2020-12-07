@@ -66,9 +66,8 @@ export class HomeComponent implements OnInit {
     quer = quer.substr(0, quer.length -1);
     //console.log(quer);
     this.queryTo = quer;
-    console.log(window.innerWidth)
+    this.filterVia();
     if(window.innerWidth <= 600){
-      console.log("hygf")
       this.showFilter = false;
     }
   }
