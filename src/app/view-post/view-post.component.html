@@ -17,6 +17,9 @@
             <h4><b>Object Type:</b> {{post.type}}<br>
             <b>Price:</b> {{post.price}}<br>
             <b>Mobile Number:</b> {{post.phone}}</h4>
+            <h4>
+                <b>Tags: </b><i *ngFor="let tag of post.tags">#{{tag}} </i>
+            </h4>
             <div *ngIf="post.username == storeInfo.getUser()">
                 <button mat-stroked-button (click)="gotoEdit()" ><mat-icon style="font-size: 16px;">edit</mat-icon> Edit</button>
             </div>
