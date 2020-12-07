@@ -5,6 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { min } from 'rxjs/operators';
+import {ThemePalette} from '@angular/material/core';
+
+export interface Task {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subtasks?: Task[];
+}
 
 @Component({
   selector: 'app-home',
@@ -12,6 +20,19 @@ import { min } from 'rxjs/operators';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  task: Task = {
+    name: 'All',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      {name: 'Books', completed: false, color: 'primary'},
+      {name: 'Notes', completed: false, color: 'primary'},
+      {name: 'Papers', completed: false, color: 'primary'},
+      {name: 'Others', completed: false, color: 'primary'}
+    ]
+  };
+  allComplete: boolean = false;
+  showFilter=true;
   ark = "";
   items = [];
   allitems = [];
@@ -20,6 +41,7 @@ export class HomeComponent implements OnInit {
   running = false;
   filterVal = new FormControl();
   objType = new FormControl();
+  queryTo = '';
   constructor(
     private storeInfo : StoreInfoService,
     private router : Router,
@@ -32,10 +54,43 @@ export class HomeComponent implements OnInit {
     if(this.storeInfo.isSignedIn){
       this.setDat();
     }
-    this.getItems(); 
+    this.setAll(true);
+    this.createQuery();
+    this.getItems(`?type=${this.queryTo}`); 
   }
-  @HostListener("window:scroll", [])
+  createQuery(){
+    var quer = '';
+    this.task.subtasks.forEach( t => {
+      if(t.completed) quer = quer + t.name.toLowerCase() + ',';
+    })
+    quer = quer.substr(0, quer.length -1);
+    //console.log(quer);
+    this.queryTo = quer;
+    console.log(window.innerWidth)
+    if(window.innerWidth <= 600){
+      console.log("hygf")
+      this.showFilter = false;
+    }
+  }
 
+  updateAllComplete() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  }
+  someComplete(): boolean {
+    if (this.task.subtasks == null) {
+      return false;
+    }
+    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  }
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if (this.task.subtasks == null) {
+      return;
+    }
+    this.task.subtasks.forEach(t => t.completed = completed);
+  }
+
+  @HostListener("window:scroll", [])
   onScroll(){
     if (!this.running && this.isAvailable && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       if(Date.now() - this.lastGet >= 1000){
@@ -50,6 +105,7 @@ export class HomeComponent implements OnInit {
       }  
     }
   }
+
   setDat(){
     this.http.get(this.storeInfo.serverUrl+'/profile').pipe().subscribe((data)=>{
       this.storeInfo.setImage(data['image'])
@@ -58,6 +114,7 @@ export class HomeComponent implements OnInit {
     })
   }
   getItems(quer:string = "", loader = false){
+    console.log(quer)
     if(loader) this.storeInfo.toggleLoader();
     this.http.get(`${this.storeInfo.serverUrl}/saman${quer}`).pipe().subscribe((data)=>{
       this.allitems = [];
@@ -78,6 +135,7 @@ export class HomeComponent implements OnInit {
       this.items.push(this.allitems[i]);
     }
     this.lastGet = Date.now();
+    this.isAvailable = true;
     if(this.allitems.length == this.items.length)
       this.isAvailable = false;
   }
@@ -86,7 +144,7 @@ export class HomeComponent implements OnInit {
   }
   filterVia(){
     var quer = this.filterVal.value;
-    var objT = this.objType.value;
+    var objT = this.queryTo;
     if(quer != "")
       quer = `?text=${quer}&type=${objT}`
     else

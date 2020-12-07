@@ -25,6 +25,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { ResetComponent } from './reset/reset.component';
 import { VerifyComponent } from './verify/verify.component';
@@ -61,6 +62,7 @@ import { VerifyComponent } from './verify/verify.component';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [
     {
