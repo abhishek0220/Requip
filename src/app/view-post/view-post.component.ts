@@ -18,6 +18,7 @@ export interface DialogData {
 export class ViewPostComponent implements OnInit {
   postID = "";
   post :object;
+  suggestion = [];
 
   constructor(
     private storeInfo : StoreInfoService,
@@ -41,14 +42,32 @@ export class ViewPostComponent implements OnInit {
     });
   }
   initialiseState(){
-    this.http.get(this.storeInfo.serverUrl+'/saman/'+this.postID).pipe().subscribe((data)=>{
-      this.post = data;
+    window.scrollTo(0, 0);
+    this.http.get(this.storeInfo.serverUrl+'/saman/'+this.postID).pipe().subscribe((data : object)=>{
+      this.post  = data;
+      var obj = "";
+      obj = data['tags'].join(" ") + " " +data['title'];
+      this.getSuggestion(obj, data['type'])
     },error =>{
       this.openSnackBar('Some Error Occured','Close')
     })
   }
   gotoProfile(){
     this.router.navigateByUrl('profile/'+this.post['username']);
+  }
+  getSuggestion(quer, catag){
+    this.http.get(`${this.storeInfo.serverUrl}/saman?text=${quer}&type=${catag}&limit=4`).pipe().subscribe((data : [])=>{
+      this.suggestion = []
+      data.forEach((element) => {
+        if(element['_id']!=this.postID) this.suggestion.push(element)
+      })
+    },error =>{
+      console.log(error)
+    })
+  }
+  open(postID){
+    this.router.navigate(['/post/' + postID]);
+    //this.router.navigateByUrl('/post/'+postID)
   }
   gotoEdit(){
     this.router.navigateByUrl('edit/post/'+this.postID);
