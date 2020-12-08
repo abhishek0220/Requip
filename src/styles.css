@@ -9,7 +9,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hover-cursor{
   cursor: pointer;
 }
-
+button:focus{
+  background-color: transparent;
+}
 body {
   display: flex;
   min-height: 100vh;

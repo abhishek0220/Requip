@@ -1,0 +1,11 @@
+.mat-dialog-title{
+    padding: 0 50px;
+}
+button:focus{
+    background-color: white !important;
+  }
+@media only screen and (max-width: 600px) {
+    .mat-dialog-title{
+        padding: 0 10px;
+    }
+}

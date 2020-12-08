@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Report this Post??</h1>
+<div mat-dialog-content>
+  <form [formGroup]="reportForm" (ngSubmit)="report()">
+    <div style="margin-bottom: 10px;">
+      <mat-form-field appearance="standard" style=" width: 100%;">
+          <mat-label style="font-size: 15px;">Reason</mat-label>
+          <textarea required matInput style="height: 50px;" formControlName="reason"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-button mat-dialog-close type="button">Close</button>
+    <button mat-stroked-button color="warn" type="submit" class="right">Report</button>
+  </form>
+</div>

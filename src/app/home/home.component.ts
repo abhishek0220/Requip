@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
       this.setDat();
     }
     this.setAll(true);
-    this.createQuery();
+    this.createQuery(false);
     this.getItems(`?type=${this.queryTo}`); 
   }
-  createQuery(){
+  createQuery(run = true){
     var quer = '';
     this.task.subtasks.forEach( t => {
       if(t.completed) quer = quer + t.name.toLowerCase() + ',';
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
     quer = quer.substr(0, quer.length -1);
     //console.log(quer);
     this.queryTo = quer;
-    this.filterVia();
+    if(run) this.filterVia();
     if(window.innerWidth <= 600){
       this.showFilter = false;
     }

@@ -15,7 +15,7 @@
 <p style="position: fixed; width: 100%; z-index: 100;">
   <mat-toolbar class="accent-4 z-depth-3 mainnav" style="padding: 0;background-image: url(./assets/1.jpg);">
     <div style="height: 100%; width: 100%; padding: 0px 16px; align-items: center; display: flex;" class="navlayer">
-      <img src="./assets/logo.png" width="50px" style="margin-right: 20px;">
+      <img src="./assets/logo.png" class="hover-cursor" (click)="goTohome()" width="50px" style="margin-right: 20px;">
       <span class="hover-cursor white-text" (click)="goTohome()">Requip</span>
       <span class="example-spacer"></span>
       <a href="login" *ngIf="!storeInfo.isSignedIn"><span class="white-text" style="font-size: 17px;">Login</span></a>
