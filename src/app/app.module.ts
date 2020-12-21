@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,8 @@ import { ViewPostComponent, DialogElementsExampleDialog } from './view-post/view
 import { ResetComponent } from './reset/reset.component';
 import { VerifyComponent } from './verify/verify.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PostsComponent } from './posts/posts.component';
+import { EntertainmentComponent } from './entertainment/entertainment.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +47,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     ViewPostComponent,
     ResetComponent,
     VerifyComponent,
-    DialogElementsExampleDialog
+    DialogElementsExampleDialog,
+    PostsComponent,
+    EntertainmentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatRippleModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,

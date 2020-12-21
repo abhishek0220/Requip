@@ -1,0 +1,58 @@
+<div class="row" style="display: flex; margin-top: -40px;">
+    <div class="col s12 m3 l2" id="filterTab" style="position: fixed;" *ngIf="showFilter">
+        <div class="col s3" style="padding: 30px 10px 10px 30px;">
+            <button mat-raised-button (click)="createQuery()">Apply</button>
+              <section class="example-section">
+                <span class="example-list-section">
+                  <mat-checkbox class="example-margin"
+                                [checked]="allComplete"
+                                [indeterminate]="someComplete()"
+                                (change)="setAll($event.checked)">
+                    {{task.name}}
+                  </mat-checkbox>
+                </span>
+                <span class="example-list-section">
+                  <ul>
+                    <li *ngFor="let subtask of task.subtasks">
+                      <mat-checkbox [(ngModel)]="subtask.completed"
+                                    [color]="subtask.color"
+                                    (ngModelChange)="updateAllComplete()">
+                        {{subtask.name}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </span>
+              </section>
+        </div>
+    </div> 
+    <div class="col s12 m9 l10" style="margin-top: 30px;">
+        <form (ngSubmit)="filterVia()">
+            <div class="row" style="display: flex;">
+                <div class="col s10" style="position: sticky;">
+                    <mat-form-field appearance="standard" style="width: 100%;" >
+                        <mat-label>Title</mat-label>
+                        <input matInput [formControl]="filterVal">
+                    </mat-form-field>
+                </div>
+                <div class="col s2 right valign-wrapper" style="position: sticky;">
+                    <button mat-icon-button ><mat-icon style="font-size: 30px;">search</mat-icon></button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col s6 m4 l3" *ngFor="let item of items" style="margin-bottom: 15px;">
+                <mat-card class="hover-cursor z-depth-3" (click)="open(item._id)">
+                    <img mat-card-image src="{{storeInfo.mediaServer}}/{{item.images}}" id="item">
+                    <mat-card-content>
+                        <h2 style="padding: 0; margin: 0; height: 60px;">{{item.title}}</h2>
+                        <h3 style="padding: 0; margin: 0; height: 60px;">Categories: {{item.type}}</h3>
+                        <h3 style="padding: 0; margin: 0; height: 20px;">Prices: {{item.price}}</h3>
+                    </mat-card-content>
+                  </mat-card>
+            </div>
+        </div> 
+    </div>
+</div>
+<div style="position: fixed; bottom: 50px; left: 50px;">
+    <button mat-fab class="white" id="filterShow" (click)="showFilter = true;"><mat-icon>edit</mat-icon></button>
+</div>

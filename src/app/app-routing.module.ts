@@ -10,6 +10,8 @@ import { CreatepostComponent } from './createpost/createpost.component';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { ResetComponent } from './reset/reset.component';
 import { VerifyComponent } from './verify/verify.component';
+import { PostsComponent } from './posts/posts.component';
+import { EntertainmentComponent } from './entertainment/entertainment.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,14 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'posts',
+    component: PostsComponent
+  },
+  {
+    path:'media',
+    component: EntertainmentComponent
   },
   {
     path:'signup',

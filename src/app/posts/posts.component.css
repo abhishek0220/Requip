@@ -1,0 +1,71 @@
+.example-section {
+    margin: 12px 0;
+  }
+  
+  .example-margin {
+    margin: 0 12px;
+  }
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+    margin-left: 30px;
+  }
+  button:focus{
+    background-color: white !important;
+  }
+  #filterShow{
+    display: none;
+  }
+  mat-form-field input {
+      border: none;
+      height: initial !important;
+      margin: 0;
+    }
+    mat-form-field input:focus {
+      border: none;
+      box-shadow: none;
+      height: initial !important;
+    }
+    mat-card{
+      width: 250px;
+      border-radius: 0px 0px 25px 0px;
+    }
+  .example-card {
+      max-width: 400px;
+    }
+  
+    #item{
+      height: 250px;;
+    }
+    .mat-button-focus-overlay { 
+      background-color: transparent!important; 
+      }
+  #filterTab{
+    border-right: black solid;
+    padding: 10px 0;
+  }
+  @media only screen and (max-width: 1280px){
+    mat-card{
+      width: 80%;
+    }
+  }
+  @media only screen and (max-width: 600px){
+    #item{
+      height: 180px;;
+    }
+    mat-card{
+      width: 100%;
+    }
+    #filterTab{
+      border-right: black none;
+      top:0;
+      padding: 100px 0;
+      z-index: 100;
+      height: 100%;
+      position: fixed;
+      background-color: rgba(255, 255, 255, 0.842);
+    }
+    #filterShow{
+      display: block;
+    }
+  }
