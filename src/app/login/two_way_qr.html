@@ -1,0 +1,16 @@
+<div>
+    <h4 style="text-align: center;">Scan the code on 2WayQR App</h4>
+    <div class="center-align" style="width: 100%;" *ngIf="progress==false">
+        <qrcode [qrdata]="qr" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+    <qr-scanner [hidden]="progress"
+        [debug]="false"
+        [canvasWidth]="720" 
+        [canvasHeight]="480" 
+        [stopAfterScan]="true"
+        [updateTime]="500">
+    </qr-scanner>
+    <div class="center-align" style="width: 100%;" *ngIf="progress==false">
+        <h4 style="text-align: center;">Show the response QR</h4>
+    </div>
+</div>

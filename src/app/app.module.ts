@@ -9,7 +9,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent, LoginDialog } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +33,8 @@ import { VerifyComponent } from './verify/verify.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PostsComponent } from './posts/posts.component';
 import { EntertainmentComponent } from './entertainment/entertainment.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgQrScannerModule } from 'angular2-qrscanner';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { EntertainmentComponent } from './entertainment/entertainment.component'
     VerifyComponent,
     DialogElementsExampleDialog,
     PostsComponent,
-    EntertainmentComponent
+    EntertainmentComponent,
+    LoginDialog
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,9 @@ import { EntertainmentComponent } from './entertainment/entertainment.component'
     MatProgressSpinnerModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    QRCodeModule,
+    NgQrScannerModule
   ],
   providers: [
     {

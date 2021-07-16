@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "Requip"
+  "defaultProject": "Requip",
+  "cli": {
+    "analytics": "d0714f1c-b9fc-4b4d-b6db-116551ee4bbb"
+  }
 }
