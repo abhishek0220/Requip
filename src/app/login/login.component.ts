@@ -160,7 +160,7 @@ export class LoginDialog implements OnInit{
     //this.progress = false
   }
   getqr(){
-    this.http.get(this.storeInfo.serverUrl + '/auth-id?scopes=email').pipe().subscribe((data)=>{
+    this.http.get(this.storeInfo.serverUrl + '/auth-id?scopes=email,name,phone').pipe().subscribe((data)=>{
       this.qr = data['qr']
       this.token = data['token']
       this.progress = false
